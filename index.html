@@ -15,9 +15,7 @@
     </style>
 </head>
 <body>
-<x-minitel data-socket="wss://3615co.de/ws"
-           data-speed="9600"
-           data-color="true">
+<x-minitel data-socket="wss://3615co.de/ws">
     <canvas data-minitel="screen"></canvas>
     <canvas data-minitel="cursor"></canvas>
 
@@ -50,13 +48,6 @@
 <script src="library/minitel/keyboard.js"></script>
 <script src="library/minitel/minitel-emulator.js"></script>
 <script src="library/minitel/start-emulators.js"></script>
-<script>
-    // TODO: Remember settings (local storage) and reuse them
-    importHTML.install()
-        .then(() => {
-            return Minitel.startEmulators()
-        })
-        .catch(reason => console.log(reason))
-</script>
+<script src="app/minitel.js"></script>
 </body>
 </html>

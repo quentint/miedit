@@ -180,10 +180,15 @@ Minitel.Emulator = class {
          */
         this.bandwidth = -1
 
+        let localSettings = localStorage.getItem('settings')
+        if (localSettings) {
+            localSettings = JSON.parse(localSettings)
+        }
+
         // Sets colors
         const colorSetting = new BooleanSettingsSuite([true, false])
         this.setColor(
-            colorSetting.setDefault(false)
+            colorSetting.setDefault(localSettings.color !== null ? localSettings.color : false)
                         .add(queryParameters("color"))
                         .add(color)
                         .add(container.getAttribute("data-color"))
@@ -193,7 +198,7 @@ Minitel.Emulator = class {
         // Sets speed
         const speedSetting = new IntegerSettingsSuite([1200, 4800, 9600, 0])
         this.setRefresh(
-            speedSetting.setDefault(Minitel.B1200)
+            speedSetting.setDefault(localSettings.speed !== null ? localSettings.speed : Minitel.B1200)
                         .add(queryParameters("speed"))
                         .add(speed)
                         .add(container.getAttribute("data-speed"))
@@ -208,6 +213,8 @@ Minitel.Emulator = class {
             this.keyboard.setConfig(settings => {
                 this.setColor(settings.color)
                 this.setRefresh(settings.speed)
+
+                localStorage.setItem('settings', JSON.stringify(settings))
             })
         }
     }

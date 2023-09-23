@@ -163,6 +163,7 @@ Settings can be specified multiple ways. The priority order is the following:
 - query parameters,
 - function argument,
 - `data-*` attribute,
+- localStorage value,
 - default value.
 
 Classes
