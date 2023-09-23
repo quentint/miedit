@@ -188,7 +188,7 @@ Minitel.Emulator = class {
         // Sets colors
         const colorSetting = new BooleanSettingsSuite([true, false])
         this.setColor(
-            colorSetting.setDefault(localSettings.color !== null ? localSettings.color : false)
+            colorSetting.setDefault((localSettings && localSettings.color !== null) ? localSettings.color : false)
                         .add(queryParameters("color"))
                         .add(color)
                         .add(container.getAttribute("data-color"))
@@ -198,7 +198,7 @@ Minitel.Emulator = class {
         // Sets speed
         const speedSetting = new IntegerSettingsSuite([1200, 4800, 9600, 0])
         this.setRefresh(
-            speedSetting.setDefault(localSettings.speed !== null ? localSettings.speed : Minitel.B1200)
+            speedSetting.setDefault((localSettings && localSettings.speed !== null) ? localSettings.speed : Minitel.B1200)
                         .add(queryParameters("speed"))
                         .add(speed)
                         .add(container.getAttribute("data-speed"))
