@@ -1,0 +1,10 @@
+{
+  "name": "@quentin.t/miedit",
+  "version": "1.0.0",
+  "description": "Minitel page editor",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentint/miedit.git"
+  }
+}
